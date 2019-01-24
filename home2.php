@@ -4,6 +4,7 @@ error_reporting(E_ALL);
  ?>
 <html>
 <head>
+  <!-- testing testing -->
 	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
 	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
@@ -16,7 +17,7 @@ error_reporting(E_ALL);
 			<ul data-role="listview">
 				<li><a href="#">Home</a></li>
 				<li><a href="http://hockeyfrissa.no-ip.biz/charts.php">Chart</a></li>
-				
+
 			</ul>
 		</div><!-- /panel -->
 		<div data-role="header">
@@ -26,7 +27,7 @@ error_reporting(E_ALL);
 		<div role="main" class="ui-content">
 			<div id="temp-wrapper" style="font-size:18px;text-align: center"></div>
 			<div id="switch-wrapper"></div>
-			
+
 		</div>
 		<div data-role="footer"></div>
 	</div>
@@ -37,35 +38,35 @@ error_reporting(E_ALL);
 
 
 <script>
-	
 
-	
+
+
 $(".btnon-group").click(function(){
 	var that = this;
 	$.post("group-on.php?" + $(that).attr("data-group"),function(data){
-		$("#status").html("Response : " + data)	
+		$("#status").html("Response : " + data)
 	})
 })
 
 $(".btnoff-group").click(function(){
 	var that = this;
 	$.post("group-off.php?" + $(that).attr("data-group"),function(data){
-		$("#status").html("Response : " + data)	
+		$("#status").html("Response : " + data)
 	})
 })
-	
+
 
 	$(document).ready(function(){
 		$.get("get-status.php",function(data){
 				var szSwitch = "";
 				var szTemp = ""
-				
+
 				szSwitch += '<ul data-role="listview" data-inset="true" id="switch-list">'
 				szSwitch += '<li data-role="list-divider">Lights <span style="float:right" id="status"></span></li>'
 				$.each(data,function(){
 					if (this.type == "sensor" && this.id == '167') {
 						szTemp = this.temp + " - " + this.humidity + " - " + this.updated
-						
+
 					}
 					if (this.type == "switch") {
 					szSwitch += '<li class="ui-field-contain">'
@@ -80,13 +81,13 @@ $(".btnoff-group").click(function(){
 				szSwitch += '</ul>'
 				$("#temp-wrapper").append(szTemp)
 				$("#switch-wrapper").append(szSwitch)
-				
+
 				$('[data-role="listview"]').listview();
 				//$(szSwitch).appendTo("#switch-wrapper").trigger("create");
 				$('.flip-it').slider();
-				
+
 				$('.flip-it').change(function(event) {
-					$.post($(this).val()+".php?" + $(this).attr("data-id"),function(data){ 		 
+					$.post($(this).val()+".php?" + $(this).attr("data-id"),function(data){
 						$("#status").html(data)
 					});
 				})
@@ -96,4 +97,3 @@ $(".btnoff-group").click(function(){
 
 </body>
 </html>
-
