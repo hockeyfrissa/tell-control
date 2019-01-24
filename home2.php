@@ -4,7 +4,7 @@ error_reporting(E_ALL);
  ?>
 <html>
 <head>
-  <!-- testing testing 2 -->
+  
 	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
 	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> -->
